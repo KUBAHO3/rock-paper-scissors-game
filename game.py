@@ -1,7 +1,5 @@
 import random
 
-
-
 def start_message():
     print("Start ‘rock-paper-scissors’ game")
 
@@ -45,8 +43,7 @@ def get_result(hands, comp):
     else:
         return 'lose'
 
-def initializer():
-    
+def initializer(): 
     hand = get_player()
     while is_hand(hand) == False:
         print('Please enter number between 0 and 2')
