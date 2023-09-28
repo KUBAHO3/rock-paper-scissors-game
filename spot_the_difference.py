@@ -10,7 +10,17 @@ def section_message():
 
 def view_question():
     choice = random.randint(0,2)
-    print(data[choice])
+    qn = data[choice]
+    print(qn)
+    i = 0
+    j = 0
+    string = ''
+    while i < 3:
+        while j < 3:
+            string += qn[0]
+            j += 1
+        print(string)
+        i += 1
 
 def play():
     section_message()
