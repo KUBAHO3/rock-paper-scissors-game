@@ -14,10 +14,11 @@ def view_question():
     print('different number '+ str(different_number + 1))
     qn = data[choice]
     print(qn)
+    print('/|ABC\n-----')
     i = 0
     j = 0
     while i < 3:
-        string = ''
+        string = str(i + 1) + '|'
         while j < 3:
             if (i * 3 + j) == different_number:
                 string += qn[1]
