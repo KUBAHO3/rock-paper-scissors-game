@@ -10,17 +10,23 @@ def section_message():
 
 def view_question():
     choice = random.randint(0,2)
+    different_number = random.randint(0,8)
+    print('different number '+ str(different_number + 1))
     qn = data[choice]
     print(qn)
     i = 0
     j = 0
-    string = ''
     while i < 3:
+        string = ''
         while j < 3:
-            string += qn[0]
+            if (i * 3 + j) == different_number:
+                string += qn[1]
+            else:
+                string += qn[0]
             j += 1
         print(string)
         i += 1
+        j = 0
 
 def play():
     section_message()
