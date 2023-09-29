@@ -1,5 +1,8 @@
 import random
+import math
+
 data = [['O','0'], ['l','1'], ['u','v']]
+col_data = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
 
 def start_message():
     print('Start')
@@ -47,11 +50,18 @@ def is_correct_number(different_number, input_number):
     else:
         return False
     
-def view_result(is_correct):
+def change_string(number):
+    col_number = number % 3
+    row_number = math.floor(number / 3) + 1
+    correct_string = col_data[col_number] + str(row_number)
+    return correct_string
+    
+def view_result(is_correct, diff_num):
     if is_correct:
         print('Correct')
     else:
         print('Wrong')
+        print('Correct answer: ', change_string(diff_num))
 
 
 def play():
@@ -60,9 +70,9 @@ def play():
     in_string = input('Input the deifferent carracter e.g: A3 \n')
     print('Your choice is: ', in_string)
     input_number = change_input_number(in_string)
-    print('Your input no is: ', input_number)
+    print('Your input no is: ', input_number + 1)
     is_correct = is_correct_number(diff_num, input_number)
-    view_result(is_correct)
+    view_result(is_correct, diff_num)
 
 start_message()
 play()
