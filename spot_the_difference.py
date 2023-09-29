@@ -39,12 +39,30 @@ def view_question():
         print(string)
         i += 1
         j = 0
+    return different_number
+
+def is_correct_number(different_number, input_number):
+    if input_number == different_number:
+        return True
+    else:
+        return False
+    
+def view_result(is_correct):
+    if is_correct:
+        print('Correct')
+    else:
+        print('Wrong')
+
 
 def play():
     section_message()
-    view_question()
+    diff_num = view_question()
     in_string = input('Input the deifferent carracter e.g: A3 \n')
-    print(change_input_number(in_string))
+    print('Your choice is: ', in_string)
+    input_number = change_input_number(in_string)
+    print('Your input no is: ', input_number)
+    is_correct = is_correct_number(diff_num, input_number)
+    view_result(is_correct)
 
 start_message()
 play()
