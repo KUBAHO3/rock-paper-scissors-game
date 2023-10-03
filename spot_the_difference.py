@@ -21,15 +21,15 @@ def change_input_number(input_str):
     row_represantation = int(input_str_split[1])
     col_number = str_dictionary[col_represantation]
     row_number = row_represantation - 1
-    input_number = row_number * row + col_number
+    input_number = row_number * col + col_number
     return input_number
 
 
 def view_question():
-    choice = random.randint(0,2)
+    choice_data = random.randint(0,2)
     different_number = random.randint(0, (col * row) - 1 )
     print('different number '+ str(different_number + 1))
-    qn = data[choice]
+    qn = data[choice_data]
     print(qn)
     aux_init = '/|'
     aux_separator = '--'
@@ -85,7 +85,6 @@ def play():
     print('Your input no is: ', input_number)
     is_correct = is_correct_number(diff_num, input_number)
     view_result(is_correct, diff_num)
-    # print(change_string(11))
 
 start_message()
 play()
