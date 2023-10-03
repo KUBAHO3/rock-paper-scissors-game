@@ -31,7 +31,15 @@ def view_question():
     print('different number '+ str(different_number + 1))
     qn = data[choice]
     print(qn)
-    print('/|ABCDE\n-------')
+    aux_init = '/|'
+    aux_separator = '--'
+    k = 0
+    while k < col:
+        aux_init += col_data[k]
+        aux_separator += '-'
+        k += 1
+    print(aux_init)
+    print(aux_separator)
     i = 0
     j = 0
     while i < row:
@@ -55,7 +63,7 @@ def is_correct_number(different_number, input_number):
     
 def change_string(number):
     col_number = number % col
-    row_number = math.floor(number / row) + 1
+    row_number = math.floor(number / col) + 1
     correct_string = col_data[col_number] + str(row_number)
     return correct_string
     
