@@ -1,3 +1,5 @@
+import random
+import math
 
 teams = []
 playing_teams = {'myself': False, 'enemy': False}
@@ -11,6 +13,15 @@ class Team:
 
     def info(self):
         print(self.name + ': offensive power: '+ str(self.attack) + ' / defensive power: '+ str(self.defense))
+
+    def get_hit_rate(self):
+        offense = random.randint(10, self.attack)
+        return offense
+    
+    def get_out_rate(self):
+        defense = random.randint(10, self.defense)
+        return defense
+    
 
 def create_teams():
     global teams 
@@ -36,11 +47,22 @@ def choice_team(player):
     playing_teams[player] = teams[choice_team_number - 1]
     print(player_name + 'team is '+ playing_teams[player].name)
 
+def  get_play_inning():
+    hit_rate = playing_teams['myself'].get_hit_rate()
+    out_rate = playing_teams['enemy'].get_out_rate()
+    inning_score = math.floor((hit_rate - out_rate) / 10)
+
+    if inning_score < 0:
+        inning_score = 0
+    return inning_score
+
 def play():
     print('Debug: play()')
     create_teams()
     show_teams()
-    choice_team('myseld')
+    choice_team('myself')
     choice_team('enemy')
+    inning_score = get_play_inning()
+    print('Debug: ', inning_score)
 
 play()
