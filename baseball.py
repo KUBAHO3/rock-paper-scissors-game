@@ -1,4 +1,6 @@
 
+teams = []
+playing_teams = {'myself': False, 'enemy': False}
 
 class Team:
 
@@ -23,9 +25,22 @@ def show_teams():
         print(teams.index(team) + 1)
         team.info()
 
+def choice_team(player):
+    player_name = ''
+    if player == 'myself':
+        player_name = 'your'
+    elif player == 'enemy':
+        player_name = 'opponent\'s'
+
+    choice_team_number = int(input('Select '+player_name+' team by input(1-3): '))
+    playing_teams[player] = teams[choice_team_number - 1]
+    print(player_name + 'team is '+ playing_teams[player].name)
+
 def play():
     print('Debug: play()')
     create_teams()
     show_teams()
+    choice_team('myseld')
+    choice_team('enemy')
 
 play()
