@@ -47,9 +47,13 @@ def choice_team(player):
     playing_teams[player] = teams[choice_team_number - 1]
     print(player_name + 'team is '+ playing_teams[player].name)
 
-def  get_play_inning():
-    hit_rate = playing_teams['myself'].get_hit_rate()
-    out_rate = playing_teams['enemy'].get_out_rate()
+def  get_play_inning(inner):
+    if inner == 'top':
+        hit_rate = playing_teams['myself'].get_hit_rate()
+        out_rate = playing_teams['enemy'].get_out_rate()
+    elif inner == 'bottom':
+        hit_rate = playing_teams['enemy'].get_hit_rate()
+        out_rate = playing_teams['myself'].get_out_rate()
     inning_score = math.floor((hit_rate - out_rate) / 10)
 
     if inning_score < 0:
@@ -62,7 +66,11 @@ def play():
     show_teams()
     choice_team('myself')
     choice_team('enemy')
-    inning_score = get_play_inning()
-    print('Debug: ', inning_score)
+
+    for i in range(9):
+        inning_score = get_play_inning('top')
+        print('Debug: top of ',i + 1,' is ', inning_score)
+        inning_score = get_play_inning('bottom')
+        print('Debug: bottom of ',i + 1,' is ', inning_score)
 
 play()
