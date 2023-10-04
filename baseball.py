@@ -16,10 +16,16 @@ def create_teams():
     team2 = Team('deffenders', 30, 70)
     team3 = Team('Averages', 50, 50)
     teams = [team1, team2, team3]
-    team1.info()
+
+def show_teams():
+    print('Information of all teams')
+    for team in teams:
+        print(teams.index(team) + 1)
+        team.info()
 
 def play():
     print('Debug: play()')
     create_teams()
+    show_teams()
 
 play()
