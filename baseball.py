@@ -10,6 +10,7 @@ class Team:
         self.name = name
         self.attack = attack
         self.defense = defense
+        self.total_score=0
 
     def info(self):
         print(self.name + ': offensive power: '+ str(self.attack) + ' / defensive power: '+ str(self.defense))
@@ -67,10 +68,19 @@ def play():
     choice_team('myself')
     choice_team('enemy')
 
-    for i in range(9):
+    score_boards = ['________|', 'You     |','Opponent|']
+    for i in range(1,10):
+        score_boards[0] += str(i) + '|'
         inning_score = get_play_inning('top')
-        print('Debug: top of ',i + 1,' is ', inning_score)
+        score_boards[1] += str(inning_score) + '|'
+        playing_teams['myself'].total_score += inning_score
+        
         inning_score = get_play_inning('bottom')
-        print('Debug: bottom of ',i + 1,' is ', inning_score)
-
+        score_boards[2] += str(inning_score) + '|'
+        playing_teams['enemy'].total_score += inning_score
+    score_boards[0] += 'R｜'
+    score_boards[1] += str(playing_teams['myself'].total_score) + '｜'
+    score_boards[2] += str(playing_teams['enemy'].total_score) + '｜'
+    for score in score_boards:
+        print(score)
 play()
