@@ -74,10 +74,13 @@ def play():
         inning_score = get_play_inning('top')
         score_boards[1] += str(inning_score) + '|'
         playing_teams['myself'].total_score += inning_score
-        
-        inning_score = get_play_inning('bottom')
-        score_boards[2] += str(inning_score) + '|'
-        playing_teams['enemy'].total_score += inning_score
+
+        if i == 9 and playing_teams['enemy'].total_score > playing_teams['myself'].total_score:
+            score_boards[2] += 'X|'
+        else:
+            inning_score = get_play_inning('bottom')
+            score_boards[2] += str(inning_score) + '|'
+            playing_teams['enemy'].total_score += inning_score
     score_boards[0] += 'R｜'
     score_boards[1] += str(playing_teams['myself'].total_score) + '｜'
     score_boards[2] += str(playing_teams['enemy'].total_score) + '｜'
